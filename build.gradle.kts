@@ -1,7 +1,7 @@
 plugins {
   id("java")
   id("maven-publish")
-  id("com.github.johnrengelman.shadow") version "8.1.1"
+  id("com.github.johnrengelman.shadow") version "8.1.1" apply false
 }
 
 allprojects {
@@ -11,9 +11,11 @@ allprojects {
 
 subprojects {
 
-  apply(plugin = "java")
-  apply(plugin = "maven-publish")
-  apply(plugin = "com.github.johnrengelman.shadow")
+  apply {
+    plugin("java")
+    plugin("maven-publish")
+    plugin("com.github.johnrengelman.shadow")
+  }
 
   val targetJavaVersion = 21
 
@@ -25,19 +27,6 @@ subprojects {
 
     if (JavaVersion.current() < javaVersion) {
       toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
-    }
-  }
-
-  publishing {
-    publications {
-
-      register(name, MavenPublication::class) {
-        groupId = "me.kvdpxne"
-        artifactId = "dico-${name}"
-        version = "0.1.0"
-
-        from(components["java"])
-      }
     }
   }
 

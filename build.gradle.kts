@@ -1,16 +1,19 @@
 plugins {
   id("java")
+  id("maven-publish")
+  id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "me.kvdpxne"
-version = "1.0-SNAPSHOT"
+version = "0.1.0"
 
 subprojects {
 
   apply(plugin = "java")
+  apply(plugin = "com.github.johnrengelman.shadow")
 
   group = "me.kvdpxne"
-  version = "1.0-SNAPSHOT"
+  version = "0.1.0"
 
   val targetJavaVersion = 21
 
@@ -35,6 +38,19 @@ subprojects {
 
     withType<Test> {
       useJUnitPlatform()
+    }
+  }
+}
+
+publishing {
+  publications {
+
+    register("mavenJava", MavenPublication::class) {
+      groupId = "me.kvdpxne"
+      artifactId = "dico"
+      version = "0.1.0"
+
+      from(components["java"])
     }
   }
 }

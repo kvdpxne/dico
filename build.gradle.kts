@@ -41,6 +41,16 @@ subprojects {
     withType<Test> {
       useJUnitPlatform()
     }
+
+    afterEvaluate {
+      publishing {
+        publications {
+          register("mavenJava", MavenPublication::class) {
+            from(components["java"])
+          }
+        }
+      }
+    }
   }
 }
 

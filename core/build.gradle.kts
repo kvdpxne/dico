@@ -9,16 +9,3 @@ dependencies {
     exclude(group = "org.spigotmc")
   }
 }
-
-publishing {
-  publications {
-
-    register("mavenJava", MavenPublication::class) {
-      groupId = "me.kvdpxne"
-      artifactId = "dico"
-      version = "0.1.0"
-
-      from(components["java"])
-    }
-  }
-}

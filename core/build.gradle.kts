@@ -5,7 +5,5 @@ dependencies {
   implementation(project(":versioning:v1_7_R1"))
   implementation(project(":versioning:v1_8_R1"))
 
-  implementation("com.github.kvdpxne:notchity:ef154a8e62") {
-    exclude(group = "org.spigotmc")
-  }
+  implementation(libraries.notchity)
 }

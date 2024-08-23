@@ -1,7 +1,8 @@
 plugins {
   id("java")
   id("maven-publish")
-  id("com.github.johnrengelman.shadow") version "8.1.1" apply false
+
+  alias(libraries.plugins.shadow)
 }
 
 allprojects {
@@ -14,7 +15,7 @@ subprojects {
   apply {
     plugin("java")
     plugin("maven-publish")
-    plugin("com.github.johnrengelman.shadow")
+    plugin("com.gradleup.shadow")
   }
 
   val targetJavaVersion = 21
@@ -30,6 +31,17 @@ subprojects {
     }
   }
 
+  afterEvaluate {
+
+    publishing {
+      publications {
+        register("mavenJava", MavenPublication::class) {
+          from(components["java"])
+        }
+      }
+    }
+  }
+
   tasks {
 
     withType<JavaCompile> {
@@ -40,16 +52,6 @@ subprojects {
 
     withType<Test> {
       useJUnitPlatform()
-    }
-
-    afterEvaluate {
-      publishing {
-        publications {
-          register("mavenJava", MavenPublication::class) {
-            from(components["java"])
-          }
-        }
-      }
     }
   }
 }

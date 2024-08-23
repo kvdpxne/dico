@@ -8,7 +8,15 @@ pluginManagement {
   }
 }
 
+@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
+
+  versionCatalogs {
+    val fileName = "libraries"
+    create(fileName) {
+      from(files("gradle/$fileName.versions.toml"))
+    }
+  }
 
   repositories {
     mavenCentral()
@@ -21,6 +29,8 @@ dependencyResolutionManagement {
       }
     }
   }
+
+  repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
 }
 
 include(

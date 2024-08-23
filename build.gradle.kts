@@ -31,9 +31,9 @@ subprojects {
   publishing {
     publications {
 
-      register("mavenJava", MavenPublication::class) {
+      register(name, MavenPublication::class) {
         groupId = "me.kvdpxne"
-        artifactId = "dico"
+        artifactId = "dico-${name}"
         version = "0.1.0"
 
         from(components["java"])

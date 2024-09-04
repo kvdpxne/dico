@@ -4,8 +4,8 @@ import java.util.Collection;
 import org.bukkit.entity.Player;
 
 /**
- * Represents a collection of local players, providing methods to access them
- * as an array or a collection.
+ * Represents a collection of local players, providing methods to access them as
+ * an array or a collection.
  *
  * @since 0.1.0
  */

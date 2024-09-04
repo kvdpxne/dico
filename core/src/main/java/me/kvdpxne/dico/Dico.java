@@ -10,25 +10,6 @@ import me.kvdpxne.notchity.VersionCreator;
 public final class Dico {
 
   /**
-   * Retrieves a collection of local players.
-   * <p>
-   * The implementation chosen depends on the Bukkit version.
-   * For versions 1.7.10 and later, {@link LocalPlayersCollection} is used;
-   * while for earlier versions, {@link LocalPlayersArray} is used.
-   *
-   * @return A collection of local players.
-   * @since 0.1.0
-   */
-  public static LocalPlayers getLocalPlayers() {
-    // The most efficient way to compare versions
-    if (VersionCreator.getBukkitVersion().isLaterThanOrEqual(10710)) {
-      return new LocalPlayersCollection();
-    }
-
-    return new LocalPlayersArray();
-  }
-
-  /**
    * Prevents instantiation of the {@link Dico} class.
    * <p>
    * This class is intended to be used as a utility class and should not be
@@ -42,5 +23,24 @@ public final class Dico {
     throw new UnsupportedOperationException(
       "Dico is a utility class and cannot be instantiated."
     );
+  }
+
+  /**
+   * Retrieves a collection of local players.
+   * <p>
+   * The implementation chosen depends on the Bukkit version. For versions
+   * 1.7.10 and later, {@link LocalPlayersCollection} is used; while for earlier
+   * versions, {@link LocalPlayersArray} is used.
+   *
+   * @return A collection of local players.
+   * @since 0.1.0
+   */
+  public static LocalPlayers getLocalPlayers() {
+    // The most efficient way to compare versions
+    if (VersionCreator.getBukkitVersion().isLaterThanOrEqual(10710)) {
+      return new LocalPlayersCollection();
+    }
+
+    return new LocalPlayersArray();
   }
 }

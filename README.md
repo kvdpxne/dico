@@ -34,7 +34,7 @@ With **Dico**, you can choose whether `Bukkit.getOnlinePlayers()` returns a
 
 ### Requirements
 
-- **Java**: 21 or higher.
+- **Java**: 8 or higher.
 
 ### Step by step
 
@@ -85,9 +85,6 @@ dependencies for the core and API modules:
 dependencies {
   // Include all modules of Dico
   implementation 'com.github.kvdpxne.dico:core:VERSION'
-
-  // Optional API module (only if needed)
-  // implementation 'com.github.kvdpxne.dico:api:VERSION'
 }
 ```
 
@@ -98,9 +95,6 @@ modify your `build.gradle.kts` file:
 dependencies {
   // Include all modules of Dico
   implementation("com.github.kvdpxne.dico:core:VERSION")
-
-  // Optional API module (only if needed)
-  // implementation("com.github.kvdpxne.dico:api:VERSION")
 }
 ```
 

@@ -48,6 +48,8 @@ subprojects {
       if (10 <= targetJavaVersion || JavaVersion.current().isJava10Compatible) {
         options.release.set(targetJavaVersion)
       }
+
+      options.compilerArgs.add("-Xlint:-options")
     }
 
     withType<Test> {

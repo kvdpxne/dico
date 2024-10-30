@@ -25,7 +25,7 @@ final class LocalPlayersCollection
 
   @Override
   public Player[] asArray() {
-    return Bukkit.getOnlinePlayers().toArray(Player[]::new);
+    return Bukkit.getOnlinePlayers().toArray(new Player[0]);
   }
 
   @Override

@@ -18,7 +18,7 @@ subprojects {
     plugin("com.gradleup.shadow")
   }
 
-  val targetJavaVersion = 21
+  val targetJavaVersion = 8
 
   java {
     val javaVersion = JavaVersion.toVersion(targetJavaVersion)

@@ -43,7 +43,7 @@ dependencyResolutionManagement {
 
 include(
   ":core",
-  ":versioning:api",
+  ":versioning:common",
   ":versioning:v1_7_R1",
   ":versioning:v1_8_R1",
 )

@@ -1,4 +1,4 @@
 dependencies {
   compileOnly(libraries.spigot.legacy)
-  implementation(project(":versioning:api"))
+  implementation(project(":versioning:common"))
 }

@@ -1,9 +1,13 @@
 [versions]
-notchity = "8bf2b5125e"
-shadow = "8.3.0"
+notchity = "cf6803c868"
+shadow = "8.3.4"
+spigot-current-oldest = "1.8-R0.1-SNAPSHOT"
+spigot-legacy = "1.7.2-R0.1-SNAPSHOT"
 
 [plugins]
 shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
 
 [libraries]
-notchity = { group = "com.github.kvdpxne", name = "notchity", version.ref = "notchity" }
+notchity = { module = "com.github.kvdpxne:notchity", version.ref = "notchity" }
+spigot-current-oldest = { module = "org.spigotmc:spigot-api", version.ref = "spigot-current-oldest" }
+spigot-legacy = { module = "org.spigotmc:spigot-api", version.ref = "spigot-legacy" }

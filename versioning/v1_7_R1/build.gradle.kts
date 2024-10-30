@@ -1,4 +1,4 @@
 dependencies {
-  shadow(files("../../libraries/craftbukkit-1.7.2-R1.jar"))
+  compileOnly(libraries.spigot.legacy)
   implementation(project(":versioning:api"))
 }

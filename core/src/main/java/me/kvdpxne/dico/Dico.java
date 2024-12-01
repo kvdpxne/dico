@@ -1,6 +1,6 @@
 package me.kvdpxne.dico;
 
-import me.kvdpxne.notchity.VersionCreator;
+import me.kvdpxne.notchity.MinecraftVersionCreator;
 
 /**
  * Provides utility methods for working with local players in a Bukkit server.
@@ -37,7 +37,7 @@ public final class Dico {
    */
   public static LocalPlayers getLocalPlayers() {
     // The most efficient way to compare versions
-    if (VersionCreator.getBukkitVersion().isLaterThanOrEqual(10710)) {
+    if (MinecraftVersionCreator.getMinecraftVersion().isLaterThanOrEqual(1_007_010)) {
       return new LocalPlayersCollection();
     }
 

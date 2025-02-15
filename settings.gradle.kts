@@ -22,8 +22,9 @@ dependencyResolutionManagement {
     mavenCentral()
     mavenLocal()
 
-    maven {
-      url = uri("https://jitpack.io/")
+    maven("https://jitpack.io/") {
+      name = "JitPack Service"
+
       content {
         includeGroupAndSubgroups("com.github.kvdpxne")
       }
@@ -41,12 +42,18 @@ dependencyResolutionManagement {
   repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
 }
 
-include(
-  ":core",
-  ":versioning:common",
-  ":versioning:v1_7_R1",
-  ":versioning:v1_8_R1",
-)
+arrayOf(
+  "core",
+  "versioning:common",
+  "versioning:v1_7_R1",
+  "versioning:v1_8_R1",
+).forEach {
+  val name = it.replace(':', '-')
+  val directory = file("./${it.replace(':', '/')}")
+
+  include(name)
+  project(":$name").projectDir = directory
+}
 
 rootProject.name = "dico"
 

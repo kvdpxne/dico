@@ -1,24 +1,40 @@
 plugins {
-  id("java")
-  id("maven-publish")
+  idea
+  `java-library`
+  `maven-publish`
 
   alias(libraries.plugins.shadow)
 }
 
 allprojects {
   group = "me.kvdpxne"
-  version = "0.1.0"
+  version = "0.1.1"
+}
+
+// The latest LTS version of Java.
+val latestJavaVersion = 21
+
+// The Java version in which the project will be compiled.
+val targetJavaVersion = 8
+
+idea {
+  project {
+    jdkName = latestJavaVersion.toString()
+  }
+
+  module {
+    isDownloadJavadoc = true
+    isDownloadSources = true
+  }
 }
 
 subprojects {
 
   apply {
-    plugin("java")
+    plugin("java-library")
     plugin("maven-publish")
     plugin("com.gradleup.shadow")
   }
-
-  val targetJavaVersion = 8
 
   java {
     val javaVersion = JavaVersion.toVersion(targetJavaVersion)
@@ -31,36 +47,49 @@ subprojects {
     }
   }
 
-  afterEvaluate {
-
-    publishing {
-      publications {
-        register("mavenJava", MavenPublication::class) {
-          from(components["java"])
-        }
-      }
-    }
-  }
-
   tasks {
 
     withType<JavaCompile> {
-      if (10 <= targetJavaVersion || JavaVersion.current().isJava10Compatible) {
-        options.release.set(targetJavaVersion)
-      }
+      options.apply {
+        if (10 <= targetJavaVersion || JavaVersion.current().isJava10Compatible) {
+          release = targetJavaVersion
+        }
 
-      options.compilerArgs.add("-Xlint:-options")
+        encoding = Charsets.UTF_8.name()
+        compilerArgs.add("-Xlint:-options")
+      }
     }
 
     withType<Test> {
       useJUnitPlatform()
     }
   }
+
+  publishing {
+    publications {
+      create<MavenPublication>("mavenJava") {
+
+        pom {
+          name = rootProject.name
+          url = "https://github.com/kvdpxne/${rootProject.name}"
+
+          licenses {
+            license {
+              name = "MIT License"
+              url = "https://opensource.org/licenses/MIT"
+            }
+          }
+        }
+
+        from(components["java"])
+      }
+    }
+  }
 }
 
 tasks {
 
-  wrapper {
+  withType<Wrapper> {
     distributionType = Wrapper.DistributionType.ALL
   }
 }

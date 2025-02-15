@@ -1,6 +1,6 @@
 [versions]
-notchity = "4a43de5b5b"
-shadow = "8.3.5"
+notchity = "0.2.0"
+shadow = "8.3.6"
 spigot-current-oldest = "1.8-R0.1-SNAPSHOT"
 spigot-legacy = "1.7.2-R0.1-SNAPSHOT"
 
